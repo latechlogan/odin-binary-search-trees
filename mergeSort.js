@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 
 function mergeSort(array) {
-  if (array.length == 1) {
+  if (array.length <= 1) {
     return array;
   }
-  let midpoint = array.length / 2;
+  let midpoint = Math.floor(array.length / 2);
   let left = mergeSort(array.slice(0, midpoint));
   let right = mergeSort(array.slice(midpoint));
 
