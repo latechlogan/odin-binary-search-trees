@@ -16,6 +16,33 @@ class Tree {
   constructor(array) {
     this.root = buildTree(array);
   }
+
+  insert(value) {
+    if (this.root === null) {
+      this.root = new Node(value);
+      return;
+    }
+
+    let currentNode = this.root;
+
+    while (currentNode !== null) {
+      if (value === currentNode.data) return; // duplicate check
+
+      if (value < currentNode.data) {
+        if (currentNode.left === null) {
+          currentNode.left = new Node(value);
+          return;
+        }
+        currentNode = currentNode.left;
+      } else {
+        if (currentNode.right === null) {
+          currentNode.right = new Node(value);
+          return;
+        }
+        currentNode = currentNode.right;
+      }
+    }
+  }
 }
 
 function buildTree(array) {
