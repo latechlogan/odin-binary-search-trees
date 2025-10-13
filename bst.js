@@ -32,8 +32,8 @@ function buildTree(array) {
 
     let root = new Node(arr[mid]);
 
-    root.left = buildTree(arr.slice(start, mid));
-    root.right = buildTree(arr.slice(mid + 1));
+    root.left = build(arr.slice(start, mid));
+    root.right = build(arr.slice(mid + 1));
 
     return root;
   }
@@ -41,4 +41,5 @@ function buildTree(array) {
   return build(sortedArray);
 }
 
-console.log(buildTree(testArray));
+let numTree = new Tree(testArray);
+console.log(numTree);
