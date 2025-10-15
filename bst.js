@@ -158,6 +158,19 @@ class Tree {
       callback(currentNode.data);
     }
   }
+
+  height(value) {
+    let targetNode = this.find(value);
+    return calcHeight(targetNode);
+
+    function calcHeight(node) {
+      if (node === null) return -1;
+      let leftHeight = calcHeight(node.left);
+      let rightHeight = calcHeight(node.right);
+
+      return Math.max(leftHeight, rightHeight) + 1;
+    }
+  }
 }
 
 function buildTree(array) {
