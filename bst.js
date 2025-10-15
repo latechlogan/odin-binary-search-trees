@@ -99,7 +99,7 @@ class Tree {
       }
     }
 
-    return `Value "${value}" not found.`;
+    return null;
   }
 
   levelOrderForEach(callback) {
@@ -161,6 +161,9 @@ class Tree {
 
   height(value) {
     let targetNode = this.find(value);
+    if (!targetNode) {
+      return null;
+    }
     return calcHeight(targetNode);
 
     function calcHeight(node) {
