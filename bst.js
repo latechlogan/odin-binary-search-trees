@@ -146,6 +146,18 @@ class Tree {
       inOrder(currentNode.right);
     }
   }
+
+  postOrderForEach(callback) {
+    if (!callback) throw new Error("No callback provided.");
+    inOrder(this.root);
+
+    function inOrder(currentNode) {
+      if (currentNode === null) return;
+      inOrder(currentNode.left);
+      inOrder(currentNode.right);
+      callback(currentNode.data);
+    }
+  }
 }
 
 function buildTree(array) {
