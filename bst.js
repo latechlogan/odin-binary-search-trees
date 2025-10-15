@@ -101,6 +101,25 @@ class Tree {
 
     return `Value "${value}" not found.`;
   }
+
+  levelOrderForEach(callback) {
+    if (this.root === null) return;
+
+    let discoveredNodes = [this.root];
+
+    while (discoveredNodes.length) {
+      let currentNode = discoveredNodes.shift();
+      callback(currentNode);
+
+      if (currentNode.left !== null) {
+        discoveredNodes.push(currentNode.left);
+      }
+
+      if (currentNode.right !== null) {
+        discoveredNodes.push(currentNode.right);
+      }
+    }
+  }
 }
 
 function buildTree(array) {
