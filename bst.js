@@ -103,6 +103,8 @@ class Tree {
   }
 
   levelOrderForEach(callback) {
+    if (!callback) throw new Error("No callback provided.");
+
     if (this.root === null) return;
 
     let discoveredNodes = [this.root];
