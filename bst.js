@@ -43,6 +43,44 @@ class Tree {
       }
     }
   }
+
+  delete(value) {
+    this.root = deleteNode(this.root, value);
+
+    function deleteNode(currentNode, value) {
+      if (currentNode === null) {
+        return currentNode;
+      }
+
+      if (value < currentNode.data) {
+        currentNode.left = deleteNode(currentNode.left, value);
+      } else if (value > currentNode.data) {
+        currentNode.right = deleteNode(currentNode.right, value);
+      } else {
+        if (currentNode.left === null) {
+          return currentNode.right;
+        }
+
+        if (currentNode.right === null) {
+          return currentNode.left;
+        }
+
+        let successor = getSuccessor(currentNode);
+        currentNode.data = successor.data;
+        currentNode.right = deleteNode(currentNode.right, successor.data);
+      }
+
+      return currentNode;
+    }
+
+    function getSuccessor(currentNode) {
+      currentNode = currentNode.right;
+      while (currentNode !== null && currentNode.left !== null) {
+        currentNode = currentNode.left;
+      }
+      return currentNode;
+    }
+  }
 }
 
 function buildTree(array) {
