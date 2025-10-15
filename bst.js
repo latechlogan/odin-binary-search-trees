@@ -81,6 +81,26 @@ class Tree {
       return currentNode;
     }
   }
+
+  find(value) {
+    let currentNode = this.root;
+
+    if (currentNode === null) {
+      return currentNode;
+    }
+
+    while (currentNode !== null) {
+      if (value < currentNode.data) {
+        currentNode = currentNode.left;
+      } else if (value > currentNode.data) {
+        currentNode = currentNode.right;
+      } else {
+        return currentNode;
+      }
+    }
+
+    return `Value "${value}" not found.`;
+  }
 }
 
 function buildTree(array) {
