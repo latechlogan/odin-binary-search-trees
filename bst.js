@@ -171,6 +171,24 @@ class Tree {
       return Math.max(leftHeight, rightHeight) + 1;
     }
   }
+
+  depth(value) {
+    return calcDepth(this.root);
+
+    function calcDepth(node) {
+      if (node === null) return null;
+
+      if (value === node.data) return 0;
+
+      if (value < node.data) {
+        let depthValue = calcDepth(node.left);
+        return depthValue !== null ? ++depthValue : null;
+      } else if (value > node.data) {
+        let depthValue = calcDepth(node.right);
+        return depthValue !== null ? ++depthValue : null;
+      }
+    }
+  }
 }
 
 function buildTree(array) {
