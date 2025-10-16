@@ -192,6 +192,23 @@ class Tree {
       }
     }
   }
+
+  isBalanced() {
+    function compareHeight(node) {
+      if (node === null) return 0;
+
+      let leftHeight = compareHeight(node.left);
+      if (leftHeight === -1) return -1;
+      let rightHeight = compareHeight(node.right);
+      if (rightHeight === -1) return -1;
+
+      if (Math.abs(leftHeight - rightHeight) > 1) return -1;
+
+      return Math.max(leftHeight, rightHeight) + 1;
+    }
+
+    return compareHeight(this.root) !== -1;
+  }
 }
 
 function buildTree(array) {
