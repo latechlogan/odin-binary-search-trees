@@ -209,6 +209,14 @@ class Tree {
 
     return compareHeight(this.root) !== -1;
   }
+
+  rebalance() {
+    let data = [];
+    this.inOrderForEach(function (node) {
+      data.push(node.data);
+    });
+    this.root = buildTree(data);
+  }
 }
 
 function buildTree(array) {
